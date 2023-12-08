@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const SibApiV3Sdk = require("sib-api-v3-sdk");
-const User = require("../models/userModel");
-const ForgotPasswordRequest = require("../models/forgotPasswordRequestModel");
+const User = require("../models/user");
+const ForgotPasswordRequest = require("../models/forgotPasswordRequest");
 require("dotenv").config();
 
 const genereteToken = ({ _id, fullName, email, phone }) => {
@@ -21,7 +21,8 @@ const signup = async (req, res) => {
         message: "Missing required fields",
       });
     }
-    const userExits = await User.findOne({ where: { email } });
+
+    const userExits = await User.findOne({ email });
     if (userExits) {
       return res
         .status(403)

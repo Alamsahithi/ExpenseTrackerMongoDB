@@ -1,5 +1,5 @@
-const Expense = require("../models/expenseModel");
-const { getExpenses } = require("../services/userServices");
+const Expense = require("../models/expense");
+const { getExpenses } = require("../services/user");
 
 const getAllExpenses = async (req, res) => {
   try {
@@ -137,7 +137,7 @@ const editExpense = async (req, res) => {
 
 const deleteExpense = async (req, res) => {
   try {
-    const id = req.params.expenseId;
+    const id = req.params.id;
     if (!id) {
       return res.status(400).json({
         status: false,
