@@ -77,7 +77,7 @@ const addExpense = async (req, res) => {
 
 const editExpense = async (req, res) => {
   try {
-    const id = req.params.expenseId;
+    const id = req.params.id;
     if (!id) {
       return res.status(400).json({
         status: false,
